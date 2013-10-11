@@ -1,0 +1,18 @@
+cd ~/Desktop
+user="username"
+
+if [ -f machinelist ]; then
+  rm -f machinelist
+fi
+file=$1
+cat $file | 
+while read machine
+do
+  echo $machine
+  users=`ssh $user@$machine -n w #  | awk 'NR==1' { $5 }`
+  echo $users | cut -d \  -f 6
+  #if [ "$users" = "0" ]; then
+  #  echo "$users $i"  > machinelist
+  #fi
+done
+

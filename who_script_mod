@@ -1,0 +1,17 @@
+#!/bin/bash
+user="username"
+
+cd ~/Desktop
+
+if [ ! -f ./which_on ]; then
+    echo "No input file!"
+    exit 1
+fi
+
+cat ./which_on |
+while read text; do
+    echo -e "$text \n-----------------"
+    ssh $user@$text 'echo `rpm -qa | grep 2.6.32-279.el6.x86_64`'
+    echo
+    ssh $user@$text 
+done

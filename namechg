@@ -1,0 +1,7 @@
+cat comps.txt | 
+while read name
+do 
+    echo hello > newcomps.txt
+    echo $name | awk -F\w+ '{print $1}' >> newcomps.txt
+done
+

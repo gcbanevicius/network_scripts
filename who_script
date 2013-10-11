@@ -1,0 +1,23 @@
+#!/bin/bash
+user="username"
+
+
+while true
+do
+    read text
+    ssh $user@$text 'echo `w`'
+    echo "Connect to remote host? "
+    read response 
+    if [ "$response" = "y" ]
+    then
+        echo "!!!"
+        #ssh $user@$text 'echo `sudo cat /boot/grub/grub.conf | grep .23`'
+  #echo "----------------------------------------------------------------"
+        ssh $user@$text 'echo `rpm -qa | grep 2.6.32-279.el6.x86_64`'
+        echo
+        read -p "Press \"Enter\" key when ready."
+        echo
+        ssh $user@$text sudo head -n 20 /boot/grub/grub.conf
+        ssh $user@$text
+    fi
+done
